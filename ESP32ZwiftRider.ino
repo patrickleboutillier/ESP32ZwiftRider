@@ -18,20 +18,13 @@ BLECharacteristic fitnessMachineFeature(BLEUUID((uint16_t)0x2ACC), BLECharacteri
 #define CADENCE     39
 #define POWER       36
 #define CONNECTED   2
-#define BUTTON      23
 
 void setup() {
   Serial.begin(115200) ;
   pinMode(POWER, INPUT) ;
   pinMode(CADENCE, INPUT) ;
-  pinMode(BUTTON, INPUT) ;
   pinMode(CONNECTED, OUTPUT) ;
   BLEDevice::init("ESP32ZwiftRider") ; // name of the ble device
-  Serial.print("Standby...") ;
-  while (! digitalRead(BUTTON)){
-    delay(50) ;
-  }
-  Serial.println("ready.") ;
   InitBLEServer() ;
 }
 
